@@ -46,6 +46,44 @@ const SignupScreen2 = ({navigation,route}) => {
         address:add
     }
         ).then((res)=>{
+
+            if(res.data.status==409){
+                Alert(alert(
+                
+                    'User already registered',
+                    'Kindly try to login with correct credentials',
+                
+                    {
+                      cancelable: true,
+                    },
+                ))
+            }
+
+            else if(res.data.status==200){
+                Alert(alert(
+                
+                    'Registration Successful',
+                    'Yayyy! thanks for registering',
+                
+                    {
+                      cancelable: true,
+                    },
+                ))
+
+                navigation.navigate('Login')
+            }
+            
+            else if(res.data.status==300){
+                Alert(alert(
+                
+                    'Registration Unsuccessful',
+                    'Something went wrong. Try again later',
+                
+                    {
+                      cancelable: true,
+                    },
+                ))
+            }
             console.log(res.message,"from the backend")
         }).catch((err)=>{
             console.log(err,"error occurred")

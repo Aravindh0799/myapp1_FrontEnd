@@ -15,8 +15,8 @@ const LoginScreen = ({navigation}) => {
                 email:email,
                 password:password
             }).then((res)=>{
-                console.log(res.status,"from the login")
-                if(res.status===200){
+                console.log(res.data.status,"from the login")
+                if(res.data.status==200){
                     Alert.alert(
                 
                         'success',
@@ -28,7 +28,18 @@ const LoginScreen = ({navigation}) => {
                     )
                     navigation.navigate('Home')
                 }
-                else{
+                else if(res.data.status==300){
+                    Alert.alert(
+                
+                        'Incorrect Password',
+                        'Kindly enter the correct password',
+                    
+                        {
+                          cancelable: true,
+                        },
+                    )
+                }
+                else if(res.data.status==400){
                     Alert.alert(
                 
                         'User not found',
