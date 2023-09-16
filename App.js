@@ -8,6 +8,8 @@ import HomeScreen from './screens/HomeScreen';
 import SignupScreen from './screens/SignupScreen';
 import Sample from './screens/Sample';
 import SignupScreen2 from './screens/SignupScreen2';
+import ApplyScreen from './screens/ApplyScreen';
+
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -19,7 +21,7 @@ export default function App() {
       <Stack.Screen options={{headerShown:false}} name="Signup2" component={SignupScreen2} />
       <Stack.Screen options={{headerShown:false}} name="Sample" component={Sample} />
       <Stack.Screen options={{headerShown:false}} name="Home" component={HomeScreen} />
-      
+      <Stack.Screen options={{headerShown:false}} name ="Apply" component={ApplyScreen}/>
       
       
     </Stack.Navigator>

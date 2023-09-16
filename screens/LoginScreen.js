@@ -2,6 +2,7 @@ import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, Vi
 import React,{useState} from 'react'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import axios from 'axios'
+import instance from './axios'
 
 const LoginScreen = ({navigation}) => {
 
@@ -11,7 +12,7 @@ const LoginScreen = ({navigation}) => {
     const handleLogin=()=>{
 
         if(email && password){
-            axios.post('https://myapp1-jsxm.onrender.com/login',{
+            instance.post('login',{
                 email:email,
                 password:password
             }).then((res)=>{
@@ -26,7 +27,7 @@ const LoginScreen = ({navigation}) => {
                           cancelable: true,
                         },
                     )
-                    navigation.navigate('Home')
+                    navigation.navigate('Home',{email:email})
                 }
                 else if(res.data.status==300){
                     Alert.alert(

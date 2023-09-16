@@ -14,6 +14,8 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { Pressable} from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { SelectList } from 'react-native-dropdown-select-list'
+import instance from './axios';
+
 
 const SignupScreen2 = ({navigation,route}) => {
     
@@ -33,7 +35,7 @@ const SignupScreen2 = ({navigation,route}) => {
     ]
 
     const handleRegister =()=>{
-        axios.post('https://myapp1-jsxm.onrender.com/register',{
+        instance.post('register',{
         name:route.params.name,
         email:route.params.email,
         password:route.params.password,
@@ -50,7 +52,7 @@ const SignupScreen2 = ({navigation,route}) => {
             if(res.data.status==409){
                 Alert(alert(
                 
-                    'User already registered',
+                    'User already registered!',
                     'Kindly try to login with correct credentials',
                 
                     {

@@ -24,6 +24,7 @@ const HomeScreen = ({navigation,route}) => {
   //   },
   // );
 
+  const email = route.params.email
 
   return (
     <KeyboardAwareScrollView>
@@ -34,28 +35,31 @@ const HomeScreen = ({navigation,route}) => {
    <View style={styles.topBar}>
       <Text style={styles.topText}>Home</Text>
       </View>
+    <TouchableOpacity
+            onPress={()=>{
+                navigation.navigate('Apply',{email:email})
+            }}
+            style={[styles.button,styles.buttonOutline]}
+            >
+      <View style={styles.buttonContainer}>
+        
+          <Text style={styles.buttonOutlineText}>Apply</Text>
+          
+      </View>
+    </TouchableOpacity>
 
-    <View style={styles.buttonContainer}>
-      <TouchableOpacity
+    <TouchableOpacity
             onPress={()=>{
                 navigation.navigate('')
             }}
             style={[styles.button,styles.buttonOutline]}
             >
-        <Text style={styles.buttonOutlineText}>Apply</Text>
-        </TouchableOpacity>
-    </View>
-
     <View style={styles.buttonContainer1}>
-      <TouchableOpacity
-            onPress={()=>{
-                navigation.navigate('')
-            }}
-            style={[styles.button,styles.buttonOutline]}
-            >
+      
         <Text style={styles.buttonOutlineText}>Track</Text>
-        </TouchableOpacity>
+        
     </View>
+    </TouchableOpacity>
    </View>
   </View>
   </TouchableWithoutFeedback>
@@ -92,7 +96,7 @@ topText:{
 buttonContainer:{
   backgroundColor:'green',
   height:100,
-  width:'80%',
+  
   borderRadius:20,
   alignItems:'center',
   textAlignVertical:'center',
@@ -103,7 +107,7 @@ buttonContainer:{
 buttonContainer1:{
   backgroundColor:'purple',
   height:100,
-  width:'80%',
+ 
   borderRadius:20,
   alignItems:'center',
   textAlignVertical:'center',
@@ -115,5 +119,9 @@ buttonOutlineText:{
   marginTop:23,
   color:'white',
   fontSize:35
+},
+
+buttonOutline:{
+  width:'80%',
 }
 })

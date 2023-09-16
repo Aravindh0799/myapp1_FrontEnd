@@ -14,7 +14,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { Pressable} from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { SelectList } from 'react-native-dropdown-select-list'
-
+import instance from './axios';
 
 const SignupScreen = ({navigation}) => {
     const [name,setName]=useState('')
