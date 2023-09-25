@@ -71,7 +71,6 @@ const SignupScreen2 = ({navigation,route}) => {
                       cancelable: true,
                     },
                 ))
-
                 navigation.navigate('Login')
             }
             

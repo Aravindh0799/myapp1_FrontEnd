@@ -12,8 +12,8 @@ const ApplyScreen = ({navigation,route}) => {
 
     const[reason,setReason]=useState('')
     const data = [
-        {key:'1', value:'Reason1'},
-        {key:'2', value:'Reason2'},
+        {key:'1', value:'Passport'},
+        {key:'2', value:'Competition'},
     ]
 
     const [selected, setSelected] = React.useState("");
@@ -37,38 +37,61 @@ const ApplyScreen = ({navigation,route}) => {
 
     const handleApply = ()=>{
         // console.log('from apply in')
-
-        instance.post('/applyBonafide',{email:email}).then(
+        instance.post('/checkBonafide',{email:email,reason:reason}).then(
             (res)=>{
-                const{name,email,password,resiStatus,dob,dept,year,religion,nationality,address} = res.data;
-
-                // setAdd(address)
-                // setDept(dept)
-                // setName(name)
-                // setDob(dob)
-                // setNationality(nationality)
-                // setYear(year)
-                // setResstatus(resiStatus)
-                // setReligion(religion)
-                // createPDF
+                console.log(res.data)
+                if(res.data.message==="existing"){
+                    Alert.alert(
                 
-                
-            }
+                        'Already applied',
+                        'Kindly wait for the approval.',
+                    
+                        {
+                          cancelable: true,
+                        },
+                    )
+                }
+                else{
+                    instance.post('/applyBonafide',{email:email,reason:reason}).then(
+                        (res)=>{
+                            // const{name,email,password,resiStatus,dob,dept,year,religion,nationality,address} = res.data;
+                            console.log(res.data)
+                            // setAdd(address)
+                            // setDept(dept)
+                            // setName(name)
+                            // setDob(dob)
+                            // setNationality(nationality)
+                            // setYear(year)
+                            // setResstatus(resiStatus)
+                            // setReligion(religion)
+                            // createPDF
             
+                            if(res.data.message==="created"){
+                                Alert.alert(
+                            
+                                    'success',
+                                    'applied',
+                                
+                                    {
+                                      cancelable: true,
+                                    },
+                                )
+                            }
+                            
+                            
+                        }
+                        
+                        
+                    )     
+                    
+                    
+                }
             
-        )     
-        
-        Alert.alert(
-                
-            'success',
-            'applied',
-        
-            {
-              cancelable: true,
-            },
+                }
+            
         )
-    }
-
+            }
+        
   return (
     <KeyboardAwareScrollView>
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>

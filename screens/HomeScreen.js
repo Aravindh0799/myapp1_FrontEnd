@@ -50,7 +50,7 @@ const HomeScreen = ({navigation,route}) => {
 
     <TouchableOpacity
             onPress={()=>{
-                navigation.navigate('')
+                navigation.navigate('Track',{email:email})
             }}
             style={[styles.button,styles.buttonOutline]}
             >
@@ -105,7 +105,7 @@ buttonContainer:{
 },
 
 buttonContainer1:{
-  backgroundColor:'purple',
+  backgroundColor:'green',
   height:100,
  
   borderRadius:20,
