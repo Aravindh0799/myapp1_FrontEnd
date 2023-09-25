@@ -39,7 +39,8 @@ const ApplyScreen = ({navigation,route}) => {
         // console.log('from apply in')
         instance.post('/checkBonafide',{email:email,reason:reason}).then(
             (res)=>{
-                console.log(res.data)
+                
+                
                 if(res.data.message==="existing"){
                     Alert.alert(
                 
@@ -65,8 +66,19 @@ const ApplyScreen = ({navigation,route}) => {
                             // setResstatus(resiStatus)
                             // setReligion(religion)
                             // createPDF
+                            if(res.data.message==="empty_reason"){
+                                Alert.alert(
+                            
+                                    'Invalid reason',
+                                    'Select a valid reason',
+                                
+                                    {
+                                      cancelable: true,
+                                    },
+                                )
+                            }
             
-                            if(res.data.message==="created"){
+                            else if(res.data.message==="created"){
                                 Alert.alert(
                             
                                     'success',
