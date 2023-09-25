@@ -27,7 +27,26 @@ const LoginScreen = ({navigation}) => {
                           cancelable: true,
                         },
                     )
-                    navigation.navigate('Home',{email:email})
+                    if(res.data.message==="user"){
+
+                        navigation.navigate('Home',{email:email,mode:"stud"})
+                    }
+
+                    else if(res.data.message==="fac"){
+
+                        navigation.navigate('Home',{email:email, mode:"fac"})
+                    }
+
+                    else if(res.data.message==="hod"){
+
+                        navigation.navigate('Home',{email:email, mode:"hod"})
+                    }
+                    else if(res.data.message==="prnc"){
+
+                        navigation.navigate('Home',{email:email, mode:"prnc"})
+                    }
+
+
                 }
                 else if(res.data.status==300){
                     Alert.alert(
