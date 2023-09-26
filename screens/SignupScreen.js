@@ -36,7 +36,11 @@ const SignupScreen = ({navigation}) => {
                 
                 'Invalid Email',
                 'Please enter a valid email',
-            
+                [
+                    {
+                      text: 'OK', // Button text
+                    },
+                  ],
                 {
                   cancelable: true,
                 },
@@ -76,7 +80,11 @@ const SignupScreen = ({navigation}) => {
                 
                 'Password Mismatch',
                 'Passwords should be the same',
-            
+                [
+                    {
+                      text: 'OK', // Button text
+                    },
+                  ],
                 {
                   cancelable: true,
                 },
@@ -190,7 +198,11 @@ const SignupScreen = ({navigation}) => {
                 
                             'Password Mismatch',
                             'Passwords should be the same',
-                        
+                            [
+                                {
+                                  text: 'OK', // Button text
+                                },
+                              ],
                             {
                               cancelable: true,
                             },
@@ -201,7 +213,11 @@ const SignupScreen = ({navigation}) => {
                     Alert.alert(
                         'Some fields are empty/Invalid',
                         'Kindly fill all the fields with correct data',
-
+                        [
+                            {
+                              text: 'OK', // Button text
+                            },
+                          ],
                         {
                             cancelable: true,
                         }

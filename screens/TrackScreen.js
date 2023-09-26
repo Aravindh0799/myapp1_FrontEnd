@@ -6,11 +6,13 @@ import instance from './axios'
 
 const TrackScreen = ({navigation,route}) => {
     const email = route.params.email
-
+    const mode = route.params.mode
+    const dept = route.params.dept
     const [bdata,setBdata] = useState("")
 
     useEffect(()=>{
-        instance.post("/getBonafides",{email:email}).then(
+        console.log(dept)
+        instance.post("/getBonafides",{email:email,mode:mode,dept:dept}).then(
             (res)=>{
                 if(res.data.message==="success"){
                     // console.log(res.data.data)
@@ -77,7 +79,7 @@ const TrackScreen = ({navigation,route}) => {
     }
 
     
-    
+    if(mode==="stud"){
     return (
 
         <KeyboardAwareScrollView>
@@ -98,6 +100,30 @@ const TrackScreen = ({navigation,route}) => {
     </TouchableWithoutFeedback>
     </KeyboardAwareScrollView>
     )
+    }
+
+    else{
+        return (
+
+            <KeyboardAwareScrollView>
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            
+            <View style={styles.inner}>
+            <View style={styles.container}>
+            <View style={styles.topBar}>
+            <Text style={styles.topText}>Requests</Text>
+            </View>
+    
+            <View style={styles.cardsContainer}>
+                {bdata?blist():elist()}
+            </View>
+    
+            </View>
+        </View>
+        </TouchableWithoutFeedback>
+        </KeyboardAwareScrollView>
+        )
+    }
 }
 
 export default TrackScreen
@@ -127,7 +153,7 @@ const styles = StyleSheet.create({
     },
 
     cards:{
-        backgroundColor:'#FF6969',
+        backgroundColor:'green',
         height:60,
         width:'100%',
         borderRadius:20,

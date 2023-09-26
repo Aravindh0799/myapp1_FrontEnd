@@ -46,7 +46,11 @@ const ApplyScreen = ({navigation,route}) => {
                 
                         'Already applied',
                         'Kindly wait for the approval.',
-                    
+                        [
+                            {
+                              text: 'OK', // Button text
+                            },
+                          ],
                         {
                           cancelable: true,
                         },
@@ -71,7 +75,11 @@ const ApplyScreen = ({navigation,route}) => {
                             
                                     'Invalid reason',
                                     'Select a valid reason',
-                                
+                                    [
+                                        {
+                                          text: 'OK', // Button text
+                                        },
+                                      ],
                                     {
                                       cancelable: true,
                                     },
@@ -80,10 +88,14 @@ const ApplyScreen = ({navigation,route}) => {
             
                             else if(res.data.message==="created"){
                                 Alert.alert(
-                            
+                                    
                                     'success',
                                     'applied',
-                                
+                                    [
+                                        {
+                                          text: 'OK', // Button text
+                                        },
+                                      ],
                                     {
                                       cancelable: true,
                                     },

@@ -17,33 +17,41 @@ const LoginScreen = ({navigation}) => {
                 password:password
             }).then((res)=>{
                 console.log(res.data.status,"from the login")
+
                 if(res.data.status==200){
                     Alert.alert(
                 
                         'success',
                         'wahooo!',
-                    
+                        [
+                            {
+                              text: 'OK', // Button text
+                            },
+                          ],
                         {
                           cancelable: true,
                         },
                     )
+
+                    const dept = res.data.dept
+                    console.log(dept)
                     if(res.data.message==="user"){
 
-                        navigation.navigate('Home',{email:email,mode:"stud"})
+                        navigation.navigate('Home',{email:email,mode:"stud",dept:dept})
                     }
 
                     else if(res.data.message==="fac"){
 
-                        navigation.navigate('Home',{email:email, mode:"fac"})
+                        navigation.navigate('Home',{email:email, mode:"fac",dept:dept})
                     }
 
                     else if(res.data.message==="hod"){
 
-                        navigation.navigate('Home',{email:email, mode:"hod"})
+                        navigation.navigate('Home',{email:email, mode:"hod",dept:dept})
                     }
                     else if(res.data.message==="prnc"){
 
-                        navigation.navigate('Home',{email:email, mode:"prnc"})
+                        navigation.navigate('Home',{email:email, mode:"prnc",dept:dept})
                     }
 
 
@@ -53,7 +61,11 @@ const LoginScreen = ({navigation}) => {
                 
                         'Incorrect Password',
                         'Kindly enter the correct password',
-                    
+                        [
+                            {
+                              text: 'OK', // Button text
+                            },
+                          ],
                         {
                           cancelable: true,
                         },
@@ -64,7 +76,11 @@ const LoginScreen = ({navigation}) => {
                 
                         'User not found',
                         'Kindly register first',
-                    
+                        [
+                            {
+                              text: 'OK', // Button text
+                            },
+                          ],
                         {
                           cancelable: true,
                         },

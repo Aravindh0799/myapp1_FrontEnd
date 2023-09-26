@@ -26,6 +26,11 @@ const HomeScreen = ({navigation,route}) => {
 
   const email = route.params.email
 
+  const mode = route.params.mode
+  const dept = route.params.dept
+  console.log(dept)
+  if(mode==="stud")
+  {  
   return (
     <KeyboardAwareScrollView>
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -50,7 +55,7 @@ const HomeScreen = ({navigation,route}) => {
 
     <TouchableOpacity
             onPress={()=>{
-                navigation.navigate('Track',{email:email})
+                navigation.navigate('Track',{email:email,mode:mode,dept:dept})
             }}
             style={[styles.button,styles.buttonOutline]}
             >
@@ -67,6 +72,39 @@ const HomeScreen = ({navigation,route}) => {
    
   )
 }
+
+else if(mode ==="fac"){
+  return (
+    <KeyboardAwareScrollView>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+    
+    <View style={styles.inner}>
+   <View style={styles.container}>
+   <View style={styles.topBar}>
+      <Text style={styles.topText}>Home</Text>
+      </View>
+    <TouchableOpacity
+            onPress={()=>{
+                navigation.navigate('Track',{email:email,mode:mode,dept:dept})
+            }}
+            style={[styles.button,styles.buttonOutline]}
+            >
+    <View style={styles.buttonContainer1}>
+      
+        <Text style={styles.buttonOutlineText}>Requests</Text>
+        
+    </View>
+    </TouchableOpacity>
+   </View>
+  </View>
+  </TouchableWithoutFeedback>
+  </KeyboardAwareScrollView>
+   
+  )
+}
+}
+
+
 
 export default HomeScreen
 
