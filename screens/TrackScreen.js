@@ -2,7 +2,8 @@ import { StyleSheet, Text, View, TouchableOpacity,TouchableWithoutFeedback,Keybo
 import React, { useEffect, useState } from 'react'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import instance from './axios'
-
+import * as Print from 'expo-print';
+import { useFocusEffect } from '@react-navigation/native';
 
 const TrackScreen = ({navigation,route}) => {
     const email = route.params.email
@@ -16,9 +17,10 @@ const TrackScreen = ({navigation,route}) => {
     }
     const [bdata,setBdata] = useState("")
 
-    useEffect(()=>{
-        console.log(mode)
-
+    useFocusEffect(
+        React.useCallback(() => {
+        
+        
         if(mode==="stud"){
         instance.post("/getBonafides",{email:email,mode:mode,dept:dept}).then(
             (res)=>{
@@ -104,18 +106,58 @@ const TrackScreen = ({navigation,route}) => {
     }
 
 
+    }, [mode, email, dept, year])
+    );
 
-    },[])
+
+    const printPdf =async(id)=>{
+            var data = null
+            console.log("d pdf")
+            await instance.post("/getpdf",{id:id}).then(
+                (res)=>{
+                    // console.log(res.data.content)
+                    if(res.data.message==="download"){
+                    data = res.data.content
+                    // console.log(data)
+                    }
+                }
+            )
+
+            if(data){
+                console.log(data)
+            const my_uri = `data:application/pdf;base64,${data}`;
+            await Print.printAsync({uri:my_uri});
+            }
+
+            else{
+                Alert.alert(
+                
+                    'Not approved',
+                    'Your bonafide could not be downloaded',
+                    [
+                        {
+                          text: 'OK', // Button text
+                        },
+                      ],
+                    {
+                      cancelable: true,
+                    },
+                )
+            }
+    }
 
     const blist = () =>{
         if(bdata && Array.isArray(bdata)){
-        return bdata.map(element=>{
+        return bdata.reverse().map(element=>{
         return(
             <TouchableOpacity
                 onPress={()=>{
                     if(mode==="fac" || mode ==="hod" || mode=="prc"){
-                        navigation.navigate('Bfide',{name:element.name,reason:element.b_type,status:element.status,email:element.email,date:element.createdAt,
-                                            id:element._id,mode:mode})
+                        navigation.navigate('Bfide',{name:element.name,reason:element.b_type,status:element.status,mail:element.email,date:element.createdAt,
+                                            id:element._id,mode:mode,dept:dept,email:email,year:year})
+                    }
+                    else{
+                        printPdf(element._id)
                     }
                 }
             }

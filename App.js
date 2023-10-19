@@ -18,6 +18,7 @@ export default function App() {
   return (
     <NavigationContainer>
     <Stack.Navigator>
+
       <Stack.Screen options={{headerShown:false}} name="Login" component={LoginScreen} />
       <Stack.Screen options={{headerShown:false}} name="Signup" component={SignupScreen} />
       <Stack.Screen options={{headerShown:false}} name="Signup2" component={SignupScreen2} />
@@ -27,6 +28,7 @@ export default function App() {
       <Stack.Screen options={{headerShown:false}} name ="Track" component={TrackScreen}/>
       <Stack.Screen options={{headerShown:false}} name ="Bfide" component={BfideScreen}/>
       
+  
       
     </Stack.Navigator>
   </NavigationContainer>

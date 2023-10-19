@@ -24,10 +24,19 @@ const Buffer = require('buffer').Buffer;
 
   const reason = route.params.reason
   const status = route.params.status
-  const email = route.params.email
+  const mail = route.params.mail
   const date  = new Date(route.params.date)
   const id = route.params.id
   const mode = route.params.mode
+  const dept = route.params.dept
+  const email = route.params.email
+  var year = null
+
+  if(mode ==="fac"){
+    year = route.params.year
+    console.log("b year ", year)
+}
+
   console.log(mode)
   const [data, setData] = useState('')
 
@@ -43,6 +52,15 @@ const Buffer = require('buffer').Buffer;
     }, [])
   );
 
+  const ANavigation = ()=>{
+    if(mode==="fac"){
+    navigation.navigate("Track",{email:email,dept:dept,year:year,mode:mode})
+    }
+    else{
+        navigation.navigate("Track",{email:email,dept:dept,mode:mode})
+    }
+  }
+
   
   
 
@@ -50,7 +68,25 @@ const Buffer = require('buffer').Buffer;
     instance.post('approveBonafide',({id:id,mode:mode})).then(
         (res)=>{
             if(res.data.message==="success"){
-                Alert.alert('Success', 'Bonafide has been approved succeesfully', [{ text: 'OK' }]);
+                Alert.alert(
+                            
+                    'Approved Successfully',
+                    'Bonafide has been approved',
+                    [
+                        {
+                            text: 'Ok', // Button text
+                            onPress:()=>{ANavigation()}
+                        },
+                        {
+                          text: 'Cancel',
+                          
+                        }
+                    ],
+                    {
+                        cancelable: true,
+                    },
+                    )
+
             }
             else{
                 Alert.alert('Failed', 'Could not process the request', [{ text: 'OK' }]);
@@ -63,7 +99,25 @@ const Buffer = require('buffer').Buffer;
     instance.post('rejectBonafide',({id:id, mode:mode})).then(
         (res)=>{
             if(res.data.message==="success"){
-                Alert.alert('Success', 'Bonafide has been Rejected succeesfully', [{ text: 'OK' }]);
+                Alert.alert(
+                            
+                    'Rejected',
+                    'Bonafide has been Rejected',
+                    [
+                        {
+                            text: 'Ok', // Button text
+                            onPress:()=>{ANavigation()}
+                        },
+                        {
+                          text: 'Cancel',
+                          
+                        }
+                    ],
+                    {
+                        cancelable: true,
+                    },
+                    )
+                
             }
             else{
                 Alert.alert('Failed', 'Could not process the request', [{ text: 'OK' }]);
@@ -85,7 +139,7 @@ const Buffer = require('buffer').Buffer;
     
     <View style={styles.dContainer}>
         <Text style={styles.dText}>
-        <Text style={styles.label}>Requested by: </Text>{email}</Text>
+        <Text style={styles.label}>Requested by: </Text>{mail}</Text>
         <Text style={styles.dText}>
         <Text style={styles.label}>Reason: </Text>{reason}</Text>
         <Text style={styles.dText}>
