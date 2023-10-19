@@ -43,43 +43,7 @@ const Buffer = require('buffer').Buffer;
     }, [])
   );
 
-  const saveBase64AsPDF = async (base64String) => {
-    try {
-      const base64PDF = base64String; // Replace this with your actual base64 string
   
-      // Get the document directory on the device
-      const documentDirectory = FileSystem.documentDirectory + 'sample.pdf';
-  
-      // Convert the base64 string to a binary array
-      const binaryArray = Uint8Array.from(atob(base64PDF), (c) => c.charCodeAt(0));
-  
-      // Write the binary array to a file
-      await FileSystem.writeAsStringAsync(documentDirectory, binaryArray.join(','), {
-        encoding: FileSystem.EncodingType.UTF8,
-      });
-  
-      // Request media library permissions
-      const { status } = await MediaLibrary.requestPermissionsAsync();
-  
-      if (status === 'granted') {
-        // Save the PDF to the device's media library
-        const asset = await MediaLibrary.createAssetAsync(documentDirectory);
-        const album = await MediaLibrary.getAlbumAsync('Download');
-  
-        if (album) {
-          await MediaLibrary.addAssetsToAlbumAsync([asset], album, false);
-          Alert.alert('Success', 'PDF saved to the device.', [{ text: 'OK' }]);
-        } else {
-          Alert.alert('Error', 'Could not save PDF to the library.', [{ text: 'OK' }]);
-        }
-      } else {
-        Alert.alert('Permission Denied', 'You need to grant permissions to save the PDF.', [{ text: 'OK' }]);
-      }
-    } catch (error) {
-      console.error('Error saving PDF:', error);
-      Alert.alert('Error', 'An error occurred while saving the PDF.', [{ text: 'OK' }]);
-    }
-  };
   
 
   const approve = (id) =>{
