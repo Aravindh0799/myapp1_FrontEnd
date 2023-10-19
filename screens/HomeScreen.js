@@ -4,25 +4,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 
 const HomeScreen = ({navigation,route}) => {
 
-  // const showAlert = () =>
-  // Alert.alert(
-  //   'Alert Title',
-  //   'My Alert Msg',
-  //   // [
-  //   //   {
-  //   //     text: 'Cancel',
-  //   //     onPress: () => Alert.alert('Cancel Pressed'),
-  //   //     style: 'cancel',
-  //   //   },
-  //   // ],
-  //   {
-  //     cancelable: true,
-  //     onDismiss: () =>
-  //       Alert.alert(
-  //         'This alert was dismissed by tapping outside of the alert dialog.',
-  //       ),
-  //   },
-  // );
+  
 
   const email = route.params.email
 
@@ -117,7 +99,7 @@ container:{
 topBar:{
   backgroundColor:"#0782F9",
   height:350,
-  width:390,
+  width:'100%',
   borderBottomLeftRadius:50,
   borderBottomRightRadius:50,
   marginBottom:30,

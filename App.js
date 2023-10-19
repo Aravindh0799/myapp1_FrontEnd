@@ -10,6 +10,8 @@ import Sample from './screens/Sample';
 import SignupScreen2 from './screens/SignupScreen2';
 import ApplyScreen from './screens/ApplyScreen';
 import TrackScreen from './screens/TrackScreen';
+import BfideScreen from './screens/BfideScreen';
+
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -23,6 +25,7 @@ export default function App() {
       <Stack.Screen options={{headerShown:false}} name="Home" component={HomeScreen} />
       <Stack.Screen options={{headerShown:false}} name ="Apply" component={ApplyScreen}/>
       <Stack.Screen options={{headerShown:false}} name ="Track" component={TrackScreen}/>
+      <Stack.Screen options={{headerShown:false}} name ="Bfide" component={BfideScreen}/>
       
       
     </Stack.Navigator>

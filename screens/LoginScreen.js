@@ -212,7 +212,7 @@ inner:{
 topBar:{
     backgroundColor:"#0782F9",
     height:350,
-    width:390,
+    width:'100%',
     borderBottomLeftRadius:50,
     borderBottomRightRadius:50,
     marginBottom:30,

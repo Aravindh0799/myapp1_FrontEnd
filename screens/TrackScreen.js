@@ -38,14 +38,19 @@ const TrackScreen = ({navigation,route}) => {
         return(
             <TouchableOpacity
                 onPress={()=>{
-
+                    if(mode==="fac"){
+                        navigation.navigate('Bfide',{name:element.name,reason:element.b_type,status:element.status,email:element.email,date:element.createdAt,
+                                            id:element._id})
+                    }
                 }
             }
             >
                 <View key={element._id} style={styles.cards}>
                 <Text style={styles.dName}>{element.name}</Text>
                 
+                {mode==="fac"?(<Text style={styles.dText}>Reason: {element.b_type}</Text>):""}
                 <Text style={styles.dText}>Status: {element.status}</Text>
+
                 
                 </View>
                 
@@ -138,7 +143,7 @@ const styles = StyleSheet.create({
     topBar:{
       backgroundColor:"#0782F9",
       height:350,
-      width:390,
+      width:'100%',
       borderBottomLeftRadius:50,
       borderBottomRightRadius:50,
       marginBottom:30,
@@ -154,7 +159,7 @@ const styles = StyleSheet.create({
 
     cards:{
         backgroundColor:'green',
-        height:60,
+        height:80,
         width:'100%',
         borderRadius:20,
         // alignItems:'center',
@@ -177,7 +182,7 @@ const styles = StyleSheet.create({
 
       dText:{
         color:"white",
-        
+        marginBottom:2,
       },
 
       
