@@ -10,7 +10,13 @@ const HomeScreen = ({navigation,route}) => {
 
   const mode = route.params.mode
   const dept = route.params.dept
-  console.log(dept)
+  var year = null
+
+  if(mode === "fac"){
+    year = route.params.year
+    console.log("yaer",year)
+  }
+  // console.log(dept)
   if(mode==="stud")
   {  
   return (
@@ -55,7 +61,7 @@ const HomeScreen = ({navigation,route}) => {
   )
 }
 
-else if(mode ==="fac"){
+else if(mode ==="fac" || mode==="hod" || mode=="prc"){
   return (
     <KeyboardAwareScrollView>
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -67,7 +73,7 @@ else if(mode ==="fac"){
       </View>
     <TouchableOpacity
             onPress={()=>{
-                navigation.navigate('Track',{email:email,mode:mode,dept:dept})
+                navigation.navigate('Track',{email:email,mode:mode,dept:dept,year:year})
             }}
             style={[styles.button,styles.buttonOutline]}
             >

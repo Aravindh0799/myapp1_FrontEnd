@@ -27,7 +27,8 @@ const Buffer = require('buffer').Buffer;
   const email = route.params.email
   const date  = new Date(route.params.date)
   const id = route.params.id
-
+  const mode = route.params.mode
+  console.log(mode)
   const [data, setData] = useState('')
 
   useFocusEffect(
@@ -35,7 +36,7 @@ const Buffer = require('buffer').Buffer;
       // Place your code here to run when the component gains focus
       instance.post('getpdf',{id:id}).then(
         (res)=>{
-            console.log(res.data.content)
+            // console.log(res.data.content)
             setData(res.data.content)
         }
       )
@@ -80,8 +81,32 @@ const Buffer = require('buffer').Buffer;
     }
   };
   
+
+  const approve = (id) =>{
+    instance.post('approveBonafide',({id:id,mode:mode})).then(
+        (res)=>{
+            if(res.data.message==="success"){
+                Alert.alert('Success', 'Bonafide has been approved succeesfully', [{ text: 'OK' }]);
+            }
+            else{
+                Alert.alert('Failed', 'Could not process the request', [{ text: 'OK' }]);
+            }
+        }
+    )
+  }
   
-  
+  const reject = (id)=>{
+    instance.post('rejectBonafide',({id:id, mode:mode})).then(
+        (res)=>{
+            if(res.data.message==="success"){
+                Alert.alert('Success', 'Bonafide has been Rejected succeesfully', [{ text: 'OK' }]);
+            }
+            else{
+                Alert.alert('Failed', 'Could not process the request', [{ text: 'OK' }]);
+            }
+        }
+    )
+  }
 
     
   return (
@@ -109,7 +134,7 @@ const Buffer = require('buffer').Buffer;
     <View style={styles.bContainer }>
     <TouchableOpacity style={styles.btn}
         onPress={()=>{
-            
+            approve(id)
         }}>
 
        <View style={styles.button}>
@@ -120,7 +145,10 @@ const Buffer = require('buffer').Buffer;
    
    
     
-    <TouchableOpacity style={styles.btn}>
+    <TouchableOpacity style={styles.btn}
+    onPress={()=>{
+        reject(id)
+    }}>
        
         <View style={styles.button}>
             <Text style={styles.bText}>Reject</Text>

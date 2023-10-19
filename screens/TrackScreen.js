@@ -8,10 +8,18 @@ const TrackScreen = ({navigation,route}) => {
     const email = route.params.email
     const mode = route.params.mode
     const dept = route.params.dept
+    var year = null
+
+    if(mode ==="fac"){
+        year = route.params.year
+        console.log("year ", year)
+    }
     const [bdata,setBdata] = useState("")
 
     useEffect(()=>{
-        console.log(dept)
+        console.log(mode)
+
+        if(mode==="stud"){
         instance.post("/getBonafides",{email:email,mode:mode,dept:dept}).then(
             (res)=>{
                 if(res.data.message==="success"){
@@ -30,6 +38,73 @@ const TrackScreen = ({navigation,route}) => {
         ).catch((err)=>{
             console.log("from getBonafide",err)
         })
+    }
+
+    else if(mode==="fac"){
+        instance.post("/getBonafidesFac",{email:email,mode:mode,dept:dept,year:year}).then(
+            (res)=>{
+                if(res.data.message==="success"){
+                    // console.log(res.data.data)
+                    const arr = res.data.data
+                    setBdata(arr)
+                    arr.forEach(element => {
+                        console.log(element.name)
+                    });
+                }
+                else{
+                    console.log("no data")
+                }
+            }
+            
+        ).catch((err)=>{
+            console.log("from getBonafide",err)
+        })
+    }
+
+    else if(mode==="hod"){
+        instance.post("/getBonafidesHod",{email:email,mode:mode,dept:dept}).then(
+            (res)=>{
+                if(res.data.message==="success"){
+                    // console.log(res.data.data)
+                    const arr = res.data.data
+                    setBdata(arr)
+                    arr.forEach(element => {
+                        console.log(element.name)
+                    });
+                }
+                else{
+                    console.log("no data")
+                }
+            }
+            
+        ).catch((err)=>{
+            console.log("from getBonafide",err)
+        })
+    }
+
+    else if(mode==="prc"){
+        instance.post("/getBonafidesPrc",{email:email,mode:mode}).then(
+            (res)=>{
+                if(res.data.message==="success"){
+                    // console.log(res.data.data)
+                    const arr = res.data.data
+                    setBdata(arr)
+                    arr.forEach(element => {
+                        console.log(element.name)
+                    });
+                }
+                else{
+                    console.log("no data")
+                }
+            }
+            
+        ).catch((err)=>{
+            console.log("from getBonafide",err)
+        })
+    }
+
+
+
     },[])
 
     const blist = () =>{
@@ -38,9 +113,9 @@ const TrackScreen = ({navigation,route}) => {
         return(
             <TouchableOpacity
                 onPress={()=>{
-                    if(mode==="fac"){
+                    if(mode==="fac" || mode ==="hod" || mode=="prc"){
                         navigation.navigate('Bfide',{name:element.name,reason:element.b_type,status:element.status,email:element.email,date:element.createdAt,
-                                            id:element._id})
+                                            id:element._id,mode:mode})
                     }
                 }
             }

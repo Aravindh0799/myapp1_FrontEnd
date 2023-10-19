@@ -34,7 +34,8 @@ const LoginScreen = ({navigation}) => {
                     )
 
                     const dept = res.data.dept
-                    console.log(dept)
+                    
+                    console.log(res.data.year)
                     if(res.data.message==="user"){
 
                         navigation.navigate('Home',{email:email,mode:"stud",dept:dept})
@@ -42,16 +43,16 @@ const LoginScreen = ({navigation}) => {
 
                     else if(res.data.message==="fac"){
 
-                        navigation.navigate('Home',{email:email, mode:"fac",dept:dept})
+                        navigation.navigate('Home',{email:email, mode:"fac",dept:dept,year:res.data.year})
                     }
 
                     else if(res.data.message==="hod"){
 
                         navigation.navigate('Home',{email:email, mode:"hod",dept:dept})
                     }
-                    else if(res.data.message==="prnc"){
+                    else if(res.data.message==="prc"){
 
-                        navigation.navigate('Home',{email:email, mode:"prnc",dept:dept})
+                        navigation.navigate('Home',{email:email, mode:"prc",dept:dept})
                     }
 
 
