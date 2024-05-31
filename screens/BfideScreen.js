@@ -7,10 +7,11 @@ import { useFocusEffect } from '@react-navigation/native';
 import instance from './axios';
 import * as FileSystem from 'expo-file-system';
 import * as MediaLibrary from 'expo-media-library';
-
+// import { Dimensions } from 'react-native';
 
 const BfideScreen = ({ navigation, route }) => {
 
+    const screenHeight = Dimensions.get('window').height
     const Buffer = require('buffer').Buffer;
 
     const [isLoading, setIsLoading] = useState(false)
@@ -164,9 +165,9 @@ const BfideScreen = ({ navigation, route }) => {
         <KeyboardAwareScrollView>
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 
-                <View style={styles.inner}>
+                <View style={[styles.inner, { height: screenHeight }]}>
                     <View style={styles.container}>
-                        <View style={styles.topBar}>
+                        <View style={[styles.topBar, { height: screenHeight * 0.45 }]}>
                             <TouchableOpacity style={styles.backTouch}
                                 onPress={() => {
                                     navigation.goBack()

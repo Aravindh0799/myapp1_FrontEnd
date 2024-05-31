@@ -4,10 +4,11 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import axios from 'axios'
 import { SelectList } from 'react-native-dropdown-select-list'
 import instance from './axios'
-
+import { Dimensions } from 'react-native'
 
 
 const ForgotPwdScreen = ({ navigation, route }) => {
+    const screenHeight = Dimensions.get('window').height
     const [isLoading, setIsLoading] = useState(false)
     const [newPwd, setNewPwd] = useState("")
     const [otp, setOtp] = useState("")
@@ -40,7 +41,7 @@ const ForgotPwdScreen = ({ navigation, route }) => {
         <KeyboardAwareScrollView>
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 
-                <View style={styles.inner}>
+                <View style={[styles.inner, { height: screenHeight }]}>
                     <TouchableOpacity style={styles.backTouch}
                         onPress={() => {
                             navigation.goBack()
@@ -50,9 +51,9 @@ const ForgotPwdScreen = ({ navigation, route }) => {
                             style={styles.back}>
                         </Image>
                     </TouchableOpacity>
-                    <View style={styles.topBar}>
+                    <View style={[styles.topBar, { height: screenHeight * 0.5 }]}>
                         <View style={styles.title}>
-                            <Image source={require('../assets/password.png')}
+                            <Image source={require('../assets/passcode.png')}
                                 style={styles.icon}>
                             </Image>
                             <Text style={styles.titleText}>Forgot Password</Text>
@@ -185,8 +186,8 @@ const styles = StyleSheet.create({
         marginTop: 50
     },
     icon: {
-        height: 60,
-        width: 60
+        height: 100,
+        width: 100
     },
     inputContainer: {
         marginTop: 15,

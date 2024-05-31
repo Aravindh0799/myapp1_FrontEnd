@@ -389,7 +389,7 @@ const TrackScreen = ({ navigation, route }) => {
                 }>
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 
-                    <View style={styles.inner}>
+                    <View style={[styles.inner, { height: screenHeight }]}>
                         <View style={styles.container}>
                             <TouchableOpacity style={styles.backTouch}
                                 onPress={() => {
@@ -400,9 +400,9 @@ const TrackScreen = ({ navigation, route }) => {
                                     style={styles.back}>
                                 </Image>
                             </TouchableOpacity>
-                            <View style={styles.topBar}>
+                            <View style={[styles.topBar, { height: screenHeight * 0.45 }]}>
                                 <View style={styles.title}>
-                                    <Image source={require('../assets/track.png')}
+                                    <Image source={require('../assets/track-big.png')}
                                         style={styles.icon}>
                                     </Image>
                                     <Text style={styles.titleText}>Track</Text>
@@ -413,7 +413,7 @@ const TrackScreen = ({ navigation, route }) => {
                                 <View style={[selectedOption == "Approved" ? styles.toggleBox1 : (selectedOption == "Pending" ? styles.toggleBox2 : styles.toggleBox3)]}>
 
                                 </View>
-                                <TouchableOpacity style={styles.toggler}
+                                <TouchableOpacity style={styles.toggler1}
                                     onPress={
                                         () => {
                                             setSelectedOption("Approved")
@@ -422,7 +422,7 @@ const TrackScreen = ({ navigation, route }) => {
                                     <Text style={selectedOption == "Approved" ? styles.toggleFont : styles.toggleTxt}>Approved</Text>
 
                                 </TouchableOpacity>
-                                <TouchableOpacity style={styles.toggler}
+                                <TouchableOpacity style={styles.toggler2}
                                     onPress={
                                         () => {
                                             setSelectedOption("Pending")
@@ -433,7 +433,7 @@ const TrackScreen = ({ navigation, route }) => {
 
                                 </TouchableOpacity>
 
-                                <TouchableOpacity style={styles.toggler}
+                                <TouchableOpacity style={styles.toggler3}
                                     onPress={
                                         () => {
                                             setSelectedOption("Rejected")
@@ -469,7 +469,7 @@ const TrackScreen = ({ navigation, route }) => {
             }>
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 
-                    <View style={styles.inner}>
+                    <View style={[styles.inner, { height: screenHeight }]}>
                         <View style={styles.container}>
                             <TouchableOpacity style={styles.backTouch}
                                 onPress={() => {
@@ -480,7 +480,7 @@ const TrackScreen = ({ navigation, route }) => {
                                     style={styles.back}>
                                 </Image>
                             </TouchableOpacity>
-                            <View style={styles.topBar}>
+                            <View style={[styles.topBar, { height: screenHeight * 0.45 }]}>
                                 <View style={styles.title}>
                                     <Image source={require('../assets/request.png')}
                                         style={styles.icon}>
@@ -492,7 +492,7 @@ const TrackScreen = ({ navigation, route }) => {
                                 <View style={[selectedOption == "Approved" ? styles.toggleBox1 : (selectedOption == "Pending" ? styles.toggleBox2 : styles.toggleBox3)]}>
 
                                 </View>
-                                <TouchableOpacity style={styles.toggler}
+                                <TouchableOpacity style={styles.toggler1}
                                     onPress={
                                         () => {
                                             setSelectedOption("Approved")
@@ -501,7 +501,7 @@ const TrackScreen = ({ navigation, route }) => {
                                     <Text style={selectedOption == "Approved" ? styles.toggleFont : styles.toggleTxt}>Approved</Text>
 
                                 </TouchableOpacity>
-                                <TouchableOpacity style={styles.toggler}
+                                <TouchableOpacity style={styles.toggler2}
                                     onPress={
                                         () => {
                                             setSelectedOption("Pending")
@@ -511,7 +511,7 @@ const TrackScreen = ({ navigation, route }) => {
                                     <Text style={selectedOption == "Pending" ? styles.toggleFont : styles.toggleTxt}>Pending</Text>
 
                                 </TouchableOpacity>
-                                <TouchableOpacity style={styles.toggler}
+                                <TouchableOpacity style={styles.toggler3}
                                     onPress={
                                         () => {
                                             setSelectedOption("Rejected")
@@ -547,11 +547,11 @@ const styles = StyleSheet.create({
 
     inner: {
         flex: 1,
-        height: '100%',
-        width: "100%"
+        // height: '100%',
+        // width: "100%"
     },
     container: {
-        flex: 1,
+        // flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
 
@@ -572,16 +572,19 @@ const styles = StyleSheet.create({
     },
     topBar: {
         backgroundColor: "#112D4E",
-        height: 350,
+        // height: 350,
         width: '100%',
         borderBottomLeftRadius: 50,
         borderBottomRightRadius: 50,
         marginBottom: 30,
         alignItems: 'center',
-        display: "absolute"
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center"
+
     },
     topText: {
-        marginTop: 150,
+        // marginTop: 150,
         color: 'white',
         fontSize: 50,
 
@@ -625,7 +628,7 @@ const styles = StyleSheet.create({
     },
     title: {
         alignItems: 'center',
-        marginTop: 150,
+        // marginTop: 150,
         display: "flex",
         flexDirection: "row",
         justifyContent: 'center'
@@ -672,26 +675,53 @@ const styles = StyleSheet.create({
         backgroundColor: "#E3EAF7",
         borderRadius: 8,
         paddingVertical: 2,
-
+        width: 270,
+        // backgroundColor: "pink"
     },
 
-    toggler: {
-        marginHorizontal: 10,
+    toggler1: {
+        marginHorizontal: '2%',
         marginVertical: 5,
         // backgroundColor: "gray",
         paddingVertical: 5,
-        paddingHorizontal: 7,
-        transitionDuration: "5s"
+        // paddingLeft: "4%",
+        transitionDuration: "5s",
+        // backgroundColor: "red",
+        width: "30%",
+    },
+    toggler2: {
+        marginHorizontal: '2%',
+        marginVertical: 5,
+        // backgroundColor: "gray",
+        paddingVertical: 5,
+        paddingHorizontal: "4%",
+        transitionDuration: "5s",
+        width: "30%",
+        // backgroundColor: "blue",
+
+
+    },
+    toggler3: {
+        marginHorizontal: '2%',
+        marginVertical: 5,
+        // backgroundColor: "gray",
+        paddingVertical: 5,
+        paddingHorizontal: '4%',
+        transitionDuration: "5s",
+        width: "30%",
+        // backgroundColor: "black",
+
+
     },
 
 
     toggleBox1: {
         height: 30,
-        width: "21%",
+        width: "29%",
         backgroundColor: "#135D66",
         position: "absolute",
         top: "15%",
-        left: "1%",
+        left: "2%",
         borderRadius: 6,
         // borderTopRightRadius: 0,
         // borderBottomRightRadius: 0
@@ -699,22 +729,22 @@ const styles = StyleSheet.create({
     },
     toggleBox2: {
         height: 30,
-        width: "20%",
+        width: "33%",
         backgroundColor: "#EE5F13",
         position: "absolute",
         top: "15%",
-        right: "21.7%",
+        // right: "33%",
         borderRadius: 6,
 
 
     },
     toggleBox3: {
         height: 30,
-        width: "20%",
+        width: "29%",
         backgroundColor: "#D80000",
         position: "absolute",
         top: "15%",
-        right: "1%",
+        right: "2%",
         borderRadius: 6,
         // borderTopLeftRadius: 0,
         // borderBottomLeftRadius: 0
@@ -723,10 +753,12 @@ const styles = StyleSheet.create({
     },
     toggleFont: {
         color: "white",
-        fontWeight: "600"
+        fontWeight: "600",
+        textAlign: "center"
     },
     toggleTxt: {
-        color: "#003C43"
+        color: "#003C43",
+        textAlign: "center"
     }
 
 

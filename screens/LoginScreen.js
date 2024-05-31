@@ -168,9 +168,9 @@ const LoginScreen = ({ navigation }) => {
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 
                 <View style={[styles.inner, { height: screenheight }]}>
-                    <View style={styles.topBar}>
+                    <View style={[styles.topBar, { height: screenheight * 0.55 }]}>
                         <View style={styles.title}>
-                            <Image style={styles.img} source={require('../assets/signin.png')}></Image>
+                            <Image style={styles.img} source={require('../assets/signin-3.png')}></Image>
                             <Text style={styles.titleText}>Sign In</Text>
                         </View>
                     </View>
@@ -307,7 +307,7 @@ const styles = StyleSheet.create({
 
     topBar: {
         backgroundColor: "#112D4E",
-        height: "50%",
+        // height: "50%",
         width: '100%',
         borderBottomLeftRadius: 50,
         borderBottomRightRadius: 50,

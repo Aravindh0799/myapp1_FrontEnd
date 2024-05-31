@@ -4,10 +4,11 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import axios from 'axios'
 import { SelectList } from 'react-native-dropdown-select-list'
 import instance from './axios'
-
+import { Dimensions } from 'react-native'
 
 
 const ApplyScreen = ({ navigation, route }) => {
+    const screenheight = Dimensions.get('window').height
     const [isLoading, setIsLoading] = useState(false)
     const [reason, setReason] = useState('')
     const data = [
@@ -124,7 +125,7 @@ const ApplyScreen = ({ navigation, route }) => {
         <KeyboardAwareScrollView>
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 
-                <View style={styles.inner}>
+                <View style={[styles.inner, { height: screenheight }]}>
                     <TouchableOpacity style={styles.backTouch}
                         onPress={() => {
                             navigation.goBack()
@@ -134,7 +135,7 @@ const ApplyScreen = ({ navigation, route }) => {
                             style={styles.back}>
                         </Image>
                     </TouchableOpacity>
-                    <View style={styles.topBar}>
+                    <View style={[styles.topBar, { height: screenheight * 0.45 }]}>
                         <View style={styles.title}>
                             <Image source={require('../assets/apply-4.png')}
                                 style={styles.icon}>
@@ -234,17 +235,20 @@ const styles = StyleSheet.create({
 
     topBar: {
         backgroundColor: "#112D4E",
-        height: 350,
+        // height: 350,
         width: '100%',
         borderBottomLeftRadius: 50,
         borderBottomRightRadius: 50,
         marginBottom: 30,
+        display: 'flex',
+        flexDirection: "column",
+        justifyContent: 'center'
 
     },
 
     title: {
         alignItems: 'center',
-        marginTop: 150,
+        // marginTop: 150,
         display: "flex",
         flexDirection: "row",
         justifyContent: 'center'

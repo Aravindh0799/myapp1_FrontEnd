@@ -5,10 +5,11 @@ import axios from 'axios'
 import { SelectList } from 'react-native-dropdown-select-list'
 import instance from './axios'
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
-
+import { Dimensions } from 'react-native'
 
 
 const ChangePwdScreen = ({ navigation, route }) => {
+    const screenHeight = Dimensions.get('window').height
     const [isLoading, setIsLoading] = useState(false)
     const [newPwd, setNewPwd] = useState("")
     const [currentPwd, setCurrentPwd] = useState("")
@@ -64,7 +65,7 @@ const ChangePwdScreen = ({ navigation, route }) => {
         <KeyboardAwareScrollView>
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 
-                <View style={styles.inner}>
+                <View style={[styles.inner, { height: screenHeight }]}>
                     <TouchableOpacity style={styles.backTouch}
                         onPress={() => {
                             navigation.goBack()
@@ -74,7 +75,7 @@ const ChangePwdScreen = ({ navigation, route }) => {
                             style={styles.back}>
                         </Image>
                     </TouchableOpacity>
-                    <View style={styles.topBar}>
+                    <View style={[styles.topBar, { height: screenHeight * 0.5 }]}>
                         <View style={styles.title}>
                             <Image source={require('../assets/password.png')}
                                 style={styles.icon}>

@@ -133,20 +133,20 @@ const HomeScreen = ({ navigation, route }) => {
                         )}
                       </TouchableOpacity>
                       <View style={styles.close}>
-                        <Button title="Close" color="#135D66" style={styles.closeTxt} onPress={closeModal} />
+                        <Button title="Close" color="#112D4E" style={[styles.closeTxt, { borderRadius: 10 }]} onPress={closeModal} />
                       </View>
                     </View>
                   </View>
                 </Modal>
               </View>
 
-              <View style={styles.topBar}>
+              <View style={[styles.topBar, { height: (screenHeight * 0.45) }]}>
                 <Image source={require('../assets/home-2.png')}
                   style={styles.icon}>
                 </Image>
                 <Text style={styles.topText}>Home</Text>
               </View>
-              <View style={styles.listContainer}>
+              <View style={[styles.listContainer, { height: (screenHeight * 0.4) }]}>
                 <View style={styles.innerlistContainer}>
                   <TouchableOpacity
                     onPress={() => {
@@ -170,7 +170,7 @@ const HomeScreen = ({ navigation, route }) => {
                     style={[styles.button, styles.buttonOutline]}
                   >
                     <View style={styles.buttonContainer1}>
-                      <Image source={require('../assets/track-3.png')}
+                      <Image source={require('../assets/track-small.png')}
                         style={styles.icon}>
                       </Image>
                       <Text style={styles.buttonOutlineText}>Track</Text>
@@ -192,7 +192,7 @@ const HomeScreen = ({ navigation, route }) => {
       <KeyboardAwareScrollView>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 
-          <View style={styles.inner}>
+          <View style={[styles.inner, { height: screenHeight }]}>
             <View style={styles.container}>
               <TouchableOpacity style={styles.profileTouch}
                 onPress={
@@ -240,19 +240,19 @@ const HomeScreen = ({ navigation, route }) => {
                         )}
                       </TouchableOpacity>
                       <View style={styles.close}>
-                        <Button title="Close" color="#135D66" style={styles.closeTxt} onPress={closeModal} />
+                        <Button title="Close" color="#112D4E" style={[styles.closeTxt, { borderRadius: 10 }]} onPress={closeModal} />
                       </View>
                     </View>
                   </View>
                 </Modal>
               </View>
-              <View style={styles.topBar}>
+              <View style={[styles.topBar, { height: screenHeight * 0.45 }]}>
                 <Image source={require('../assets/home-2.png')}
                   style={styles.icon}>
                 </Image>
                 <Text style={styles.topText}>Home</Text>
               </View>
-              <View style={styles.listContainer}>
+              <View style={[styles.listContainer, { height: screenHeight * 0.4 }]}>
                 <TouchableOpacity
                   onPress={() => {
                     navigation.navigate('Track', { email: email, mode: mode, dept: dept, prog: prog, year: year, name: name, section: section })
@@ -331,7 +331,7 @@ const styles = StyleSheet.create({
   },
   topBar: {
     backgroundColor: "#112D4E",
-    height: 350,
+    // height: 350,
     width: '100%',
     borderBottomLeftRadius: 50,
     borderBottomRightRadius: 50,
@@ -356,7 +356,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     textAlignVertical: 'center',
     marginBottom: 20,
-    marginTop: '20%',
+    // marginTop: '20%',
     display: "flex",
     flexDirection: "row",
     justifyContent: 'center'
@@ -494,6 +494,7 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   closeTxt: {
-    color: "#112D4E"
+    color: "#112D4E",
+    borderRadius: 10
   }
 })
