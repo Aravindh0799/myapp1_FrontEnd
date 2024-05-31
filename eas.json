@@ -13,7 +13,6 @@
     "production": {},
     "androidapk": {
       "android": {
-        "buildType": "apk",
         "image": "latest"
       },
       "ios": {
