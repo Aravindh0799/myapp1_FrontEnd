@@ -10,13 +10,17 @@
     "preview": {
       "distribution": "internal"
     },
-    "production": {},
-    "androidapk": {
+    "production": {
       "android": {
         "image": "latest"
       },
       "ios": {
         "image": "latest"
+      }
+    },
+    "androidapk": {
+      "android": {
+        "buildType": "apk"
       }
     }
   },
