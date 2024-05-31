@@ -2,7 +2,7 @@
   "expo": {
     "name": "myapp1",
     "slug": "myapp1",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -31,6 +31,20 @@
       "eas": {
         "projectId": "d48da294-6fda-4f85-9a09-373ab96414fc"
       }
-    }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/d48da294-6fda-4f85-9a09-373ab96414fc"
+    },
+    "plugins": [
+      [
+        "expo-updates",
+        {
+          "username": "aravindh07199"
+        }
+      ]
+    ]
   }
 }
