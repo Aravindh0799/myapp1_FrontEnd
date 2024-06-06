@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { Dimensions } from 'react-native'
+import { Dimensions, StatusBar } from 'react-native'
 
 const HomeScreen = ({ navigation, route }) => {
 
@@ -85,6 +85,12 @@ const HomeScreen = ({ navigation, route }) => {
     return (
 
       <KeyboardAwareScrollView>
+        <StatusBar
+          animated={true}
+          backgroundColor="black"
+          barStyle="default"
+          hidden={false}
+        />
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 
           <View style={[styles.inner, { height: screenHeight }]}>
@@ -190,6 +196,12 @@ const HomeScreen = ({ navigation, route }) => {
   else if (mode === "fac" || mode === "hod" || mode == "prc") {
     return (
       <KeyboardAwareScrollView>
+        <StatusBar
+          animated={true}
+          backgroundColor="black"
+          barStyle="default"
+          hidden={false}
+        />
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 
           <View style={[styles.inner, { height: screenHeight }]}>

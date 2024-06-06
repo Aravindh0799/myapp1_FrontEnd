@@ -244,7 +244,7 @@ export default BfideScreen
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        // flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -262,7 +262,7 @@ const styles = StyleSheet.create({
     },
     topBar: {
         backgroundColor: "#112D4E",
-        height: 350,
+        // height: 350,
         width: '100%',
         borderBottomLeftRadius: 50,
         borderBottomRightRadius: 50,

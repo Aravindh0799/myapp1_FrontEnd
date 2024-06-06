@@ -1,4 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
+// import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -16,9 +16,13 @@ import ForgotPwdScreen from './screens/forgotPwd';
 import 'react-native-gesture-handler';
 import * as Updates from 'expo-updates';
 import { useEffect } from 'react';
+import { StatusBar } from 'react-native';
+
 
 const Stack = createNativeStackNavigator();
 export default function App() {
+
+
 
   async function onFetchUpdateAsync() {
     try {

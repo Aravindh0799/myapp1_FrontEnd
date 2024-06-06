@@ -8,7 +8,6 @@ import * as Animatable from 'react-native-animatable';
 import { Dimensions } from 'react-native';
 import * as FileSystem from 'expo-file-system';
 
-
 const TrackScreen = ({ navigation, route }) => {
 
 
@@ -386,10 +385,11 @@ const TrackScreen = ({ navigation, route }) => {
             <KeyboardAwareScrollView contentContainerStyle={styles.scrollView}
                 refreshControl={
                     <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-                }>
+                }
+                nestedScrollEnabled={true}>
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 
-                    <View style={[styles.inner, { height: screenHeight }]}>
+                    <View style={[styles.inner,]}>
                         <View style={styles.container}>
                             <TouchableOpacity style={styles.backTouch}
                                 onPress={() => {
@@ -445,9 +445,9 @@ const TrackScreen = ({ navigation, route }) => {
                                 </TouchableOpacity>
                             </View>
                             <View style={styles.cardsContainer}>
-                                <KeyboardAwareScrollView>
+                                <ScrollView showsVerticalScrollIndicator={true}>
                                     {bdata ? blist() : ""}
-                                </KeyboardAwareScrollView>
+                                </ScrollView>
                             </View>
 
                         </View>
@@ -466,10 +466,11 @@ const TrackScreen = ({ navigation, route }) => {
 
             <KeyboardAwareScrollView refreshControl={
                 <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-            }>
+            }
+                nestedScrollEnabled={true}>
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 
-                    <View style={[styles.inner, { height: screenHeight }]}>
+                    <View style={[styles.inner]}>
                         <View style={styles.container}>
                             <TouchableOpacity style={styles.backTouch}
                                 onPress={() => {
@@ -523,8 +524,9 @@ const TrackScreen = ({ navigation, route }) => {
                                 </TouchableOpacity>
                             </View>
                             <View style={styles.cardsContainer}>
-                                {bdata ? blist() : ""}
-
+                                <ScrollView showsVerticalScrollIndicator={true}>
+                                    {bdata ? blist() : ""}
+                                </ScrollView>
                             </View>
 
                         </View>
@@ -610,7 +612,8 @@ const styles = StyleSheet.create({
         width: '90%',
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center"
+        justifyContent: "center",
+        paddingBottom: "10%"
     },
 
     dName: {
