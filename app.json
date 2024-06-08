@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "GetBonafide",
-    "slug": "GetBonafide",
+    "name": "myapp1",
+    "slug": "myapp1",
     "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/sign.png",

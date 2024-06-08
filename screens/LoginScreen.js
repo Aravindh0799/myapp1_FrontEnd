@@ -1,4 +1,4 @@
-import { KeyboardAvoidingView, StyleSheet, Text, Image, TextInput, TouchableOpacity, View, TouchableWithoutFeedback, Keyboard, Alert, ActivityIndicator, Dimensions } from 'react-native'
+import { KeyboardAvoidingView, StatusBar, StyleSheet, Text, Image, TextInput, TouchableOpacity, View, TouchableWithoutFeedback, Keyboard, Alert, ActivityIndicator, Dimensions } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import axios from 'axios'
@@ -165,6 +165,12 @@ const LoginScreen = ({ navigation }) => {
     return (
 
         <KeyboardAwareScrollView>
+            <StatusBar
+                animated={true}
+                backgroundColor="black"
+                barStyle="default"
+                hidden={false}
+            />
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 
                 <View style={[styles.inner, { height: screenheight }]}>
